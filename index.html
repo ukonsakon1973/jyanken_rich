@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>じゃんけん大会 rich.ver</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header-banner">
+    <h1>じゃんけん大会 rich.ver</h1>
+  </header>
+
+  <div class="game-container">
+    <!-- 左側：あなた用の縦型星取表 -->
+    <div class="hoshitori" id="player-hoshitori">
+      <div class="hoshitori-title">あなた</div>
+    </div>
+
+    <!-- メインバトルパネル -->
+    <div class="main-battle-panel">
+      <div class="battle-field">
+        <!-- あなたキャラクター  -->
+        <div class="char-box">
+          <div id="player-praise" class="praise-mark">🎉 大勝利！</div>
+          <img src="hiotoko.png" alt="あなた" class="char-img">
+          <p>あなた</p>
+        </div>
+
+        <!-- 中央：勝敗・手表示 -->
+        <div class="center-status">
+          <div id="round-result">対戦待ち (1/10戦)</div>
+          <p>相手が出した手:</p>
+          <img id="cpu-hand-img" src="" alt="相手の手" style="display: none; 
+          width: 100px; height: 100px; object-fit: contain; margin: 5px auto;">
+        
+        </div>
+
+        <!-- 相手キャラクター  -->
+        <div class="char-box">
+          <div id="cpu-praise" class="praise-mark">👑 勝者！</div>
+          <img src="kitune.png" alt="相手" class="char-img">
+          <p>相手</p>
+        </div>
+      </div>
+    
+      <!-- 操作エリア：グー・チョキ・パーの画像ボタン -->
+      <div class="controls-area">
+        <h3>あなたの出す手は？</h3>
+        <div class="hands-buttons">
+          <button class="hand-btn" onclick="playRound(0)" id="btn-0">
+            <img src="goo.png" alt="グー">
+          </button>
+          <button class="hand-btn" onclick="playRound(1)" id="btn-1">
+            <img src="cyoki.png" alt="チョキ">
+          </button>
+          <button class="hand-btn" onclick="playRound(2)" id="btn-2">
+            <img src="par.png" alt="パー">
+          </button>
+        </div>
+      </div>
+
+      <!-- リトライボタン -->
+      <button class="reset-btn" id="reset-btn" onclick="resetGame()">もう一度勝負する</button>
+
+    </div>
+
+    <!-- 右側：相手用の縦型星取表 -->
+    <div class="hoshitori" id="cpu-hoshitori">
+      <div class="hoshitori-title">相手</div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

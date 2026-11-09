@@ -1,0 +1,234 @@
+/* ==========================================
+   ヘッダー背景画像とタイトルの設定
+   ========================================== */
+.header-banner {
+  width: 100%;
+  max-width: 1050px; /* メインエリアの横幅と合わせる */
+  height: 260px;     /* ヘッダーの高さをしっかり確保 */
+  background: url('furin_bg.jpg') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px auto; /* 画面中央に配置し、下に余白 */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.header-banner h1 {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 10px 24px;
+  border-radius: 8px;
+  margin: 0;
+  font-size: 26px;
+  color: #333;
+}
+
+/* ==========================================
+   全体レイアウト・背景の設定
+   ========================================== */
+body {
+  margin: 0;
+  padding: 0 0 40px 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: #f0f4f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ゲームコンテナ：横幅を広げてヘッダーとバランスを合わせる */
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1050px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   左右の縦型星取表
+   ========================================== */
+.hoshitori {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 8px;
+  border-radius: 12px;
+  border: 3px solid #dcdcdc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  min-width: 44px;
+  text-align: center;
+}
+
+.hoshitori-title {
+  font-size: 11px;
+  font-weight: bold;
+  color: #666;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+}
+
+.star-slot {
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 50%;
+  background: #f2f2f2;
+  font-size: 12px;
+  font-weight: bold;
+  color: #aaa;
+  margin: 0 auto;
+}
+
+.star-slot.win { background: #ffea00; color: #d32f2f; box-shadow: 0 2px 4px rgba(255,234,0,0.4); } 
+.star-slot.lose { background: #78909c; color: #fff; }    
+.star-slot.draw { background: #b0bec5; color: #fff; }    
+
+/* ==========================================
+   中央のメイン対戦エリアとキャラクター
+   ========================================== */
+.main-battle-panel {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  padding: 30px;
+  flex: 1;
+  max-width: 700px; /* プレイエリアの横幅を広げる */
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.battle-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.char-box {
+  position: relative;
+  text-align: center;
+  width: 150px; 
+}
+
+.char-box p {
+  margin: 8px 0 0 0;
+  font-weight: bold;
+  color: #444;
+  font-size: 16px;
+}
+
+.char-img {
+  width: 130px; 
+  height: auto;
+}
+
+/* 勝者の賞賛マーク（ポップアップバッジ） */
+.praise-mark {
+  display: none;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff3d00;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(255,61,0,0.3);
+  white-space: nowrap;
+  z-index: 10;
+  animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes bounceIn {
+  0% { transform: translateX(-50%) scale(0); }
+  70% { transform: translateX(-50%) scale(1.1); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+/* ==========================================
+   操作ボタンと中央の手（グー・チョキ・パー）
+   ========================================== */
+.controls-area h3 {
+  margin: 15px 0 10px 0;
+  font-size: 17px;
+  color: #555;
+}
+
+.hands-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.hand-btn {
+  background: #fff;
+  border: 3px solid #ddd;
+  border-radius: 16px;
+  padding: 12px 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.hand-btn:hover:not(:disabled) {
+  border-color: #2196f3;
+  background: #e3f2fd;
+  transform: translateY(-3px);
+}
+
+.hand-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.hand-btn img {
+  width: 75px;  
+  height: 75px;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+/* 結果表示エリア */
+#round-result {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #d32f2f;
+}
+
+.center-status p {
+  font-size: 15px;
+  color: #666;
+  margin: 5px 0;
+}
+
+/* リセットボタン */
+.reset-btn {
+  display: none;
+  margin: 20px auto 0 auto;
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.reset-btn:hover {
+  background: #43a047;
+}
+
